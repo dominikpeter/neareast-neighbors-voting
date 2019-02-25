@@ -57,7 +57,7 @@ class NearestNeighborsVoting(NearestNeighbors):
     def _get_kneighbors(self, X, n_neighbors, metric):
         try:
             check_is_fitted(self, ["_fit_method", "_fit_X"], all_or_any=any)
-            self.fit(self._fit_X)
+            self._fit(self._fit_X)
             dist, ind = self.kneighbors(X, return_distance=True)
             if dist.shape == (X.shape[0], n_neighbors):
                 return dist, ind, metric
